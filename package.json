@@ -1,0 +1,32 @@
+{
+  "author": "Carles Capellas <capellas.carles@gmail.com>",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "husky": "^7.0.4",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
+  "license": "ISC",
+  "main": "distribution/index.js",
+  "name": "weather-server",
+  "scripts": {
+    "build": "npm run clean && tsc -p ./tsconfig.server.json",
+    "build:check": "tsc -p ./tsconfig.server.json --noEmit",
+    "clean": "rm -rf distribution",
+    "clean:modules": "rm -rf node_modules",
+    "format:check": "prettier --list-different './source/**/*.ts' './**/*.json'",
+    "format:fix": "prettier --write './source/**/*.ts' './**/*.json'",
+    "prepare": "husky install",
+    "start": "node distribution/index.js",
+    "start:dev": "nodemon source/index.ts"
+  }
+}
